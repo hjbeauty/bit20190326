@@ -4,3 +4,7 @@
 
 
 프로젝트 간트찬트 auiproject.com/prj/view.html?i=MTA3OTI4NDMxNzgwNjM0NjY3Mzk0LDEyOTk1LGty
+
+
+프로젝트 깃허브 : https://github.com/babbingproject/BabbingProject
+
