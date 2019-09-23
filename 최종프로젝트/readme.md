@@ -19,3 +19,6 @@ spring boot + thymeleaf + lombok + jpa + dbms + front(jquery , bootstrap , etc)�
 
 
 5조 권재범 홍한솔 황준우 정동원 최창국
+
+
+6조 손혁진
