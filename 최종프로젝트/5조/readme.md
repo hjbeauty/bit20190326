@@ -4,4 +4,4 @@
 
 회의록 : https://drive.google.com/drive/folders/1Mw_qBPMe4lSo38oEdcTCAzUYzeRI7ljm?usp=sharing
 
-프로젝트 깃허브 : https://github.com/bitcamp122team5/hifive
+프로젝트 깃허브 : https://github.com/bitcamp122team5/bitware
