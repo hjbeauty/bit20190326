@@ -1,4 +1,4 @@
-spring boot + thymeleaf + lombok + jpa + dbms + front(jquery , bootstrap , etc)를 사용한 프로젝트 
+spring boot + thymeleaf + lombok + jpa + dbms + front(jquery , bootstrap , mybatis, etc)를 사용한 프로젝트 
 
 
 
