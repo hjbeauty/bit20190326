@@ -1,0 +1,53 @@
+게시판 생성 쿼리문
+
+create table board(
+bId number(4) primary key,
+bName varchar2(20),
+bTitle varchar2(100),
+bContent varchar2(300),
+bDate date default sysdate,
+bHit number(4) default 0,
+bGroup number(4),
+bStep number(4),
+bIndent number(4));
+
+==================================
+게시판 시퀀스 쿼리문
+
+create sequence boardSeq;
+
+==================================
+댓글 테이블 생성 쿼리문
+
+create table comments(
+cId number(4) primary key,
+cName varchar2(20),
+cContent varchar2(300),
+cDate date default sysdate,
+cGroup number(4) CONSTRAINT FK_COMMENTS REFERENCES board(BID) on delete cascade,
+cGroup2 number(4),
+cStep number(4),
+cIndent number(4)
+);
+
+참고사항 : on delete cascade는 게시글 지울 때 댓글도 지워지게 설정
+on delete set null 로 하면 게시글 지울 때 댓글은 안지워지고 포링키부분 null로 바뀜
+
+==================================
+댓글 시컨스 쿼리문
+
+CREATE SEQUENCE COMMENTSSEQ;
+
+==================================
+가데이터 991개 생성
+
+
+declare
+    i number :=1;
+begin
+    while i<=991 loop
+        insert into board (bid, bname, btitle, bcontent, bhit, bGroup, bstep, bindent)
+        values ((select nvl(max(bid)+1,1) from board),'kwon','안녕'||i,'안녕',0,(select nvl(max(bid)+1,1) from board), 0,0);
+        i := i+1;
+    end loop;
+end;
