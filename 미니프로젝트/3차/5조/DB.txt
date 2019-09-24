@@ -1,0 +1,66 @@
+create table member(
+userId varchar2(10),
+password varchar2(30),
+name varchar2(10),
+address varchar2(50),
+phone varchar2(15),
+email varchar2(50),
+birth varchar2(10),
+job varchar2(10),
+joinDate date default sysdate,
+constraint member_userId_pk primary key(userId)
+);
+
+create table product(
+productNo number(5),
+productName varchar2(20),
+productPrice number default 0,
+productDesc clob,
+pictureUrl varchar2(500),
+constraint product_productNo_pk primary key(productNo)
+);
+
+create table cart(
+cartNo number(5),
+userId varchar2(10),
+productNo number(5),
+amount number default 0,
+constraint cart_cartNo_pk primary key (cartNo),
+constraint cart_userId_fk foreign key (userId) references member (userId) on delete set null,
+constraint cart_productNo_fk foreign key (productNo) references product (productNo) on delete cascade
+);
+
+create table admin(
+userId varchar2(10) primary key,
+password varchar2(30),
+name varchar2(10)
+);
+
+create table commentz(
+commentNo number(5),
+productNo number(5),
+userId varchar2(10),
+commentContent varchar2(500),
+commentDate date default sysdate,
+constraint comment_commentNo_pk primary key (commentNo),
+constraint comment_userId_fk foreign key (userId) references member (userId) on delete cascade,
+constraint comment_productNo_fk foreign key (productNo) references product (productNo) on delete cascade
+);
+
+insert into member(userid,password,name,address,phone,email,birth) values ('kwon','jaebum','권재범','서울','010-2641-2684','jaebumi0415@hanmail.net','1984.04.15');
+insert into member (userId,password,name,email) values('kwon','jaebum','권재범','jaebumi0415@hanmail.net');
+insert into admin (userId, password, name) values('admin','jaebum','관리자1');
+
+create sequence productSeq;
+create sequence cartSeq;
+create sequence commentSeq;
+
+drop sequence cartSeq;
+drop sequence productSeq;
+
+drop table admin cascade constraints;
+drop table member cascade constraints;
+drop table product cascade constraints;
+drop table cart cascade constraints;
+
+commit;
